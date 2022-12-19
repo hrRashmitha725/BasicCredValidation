@@ -9,9 +9,9 @@ import Foundation
 
 public struct Validator {
      
-    static let shared:Validator = Validator()
+    public static let shared:Validator = Validator()
     
-    static func emailValidation(email: String) -> (isEmpty: Bool, isInvalid: Bool) {
+    public static func emailValidation(email: String) -> (isEmpty: Bool, isInvalid: Bool) {
         let isEmpty = (email.isEmpty || email.trimmingCharacters(in: .whitespaces).count <= 0)
         let isValidEmail = !Validator.shared.validateEmail(email: email)
         return (isEmpty: isEmpty, isInvalid: isValidEmail)
@@ -24,14 +24,14 @@ public struct Validator {
     }
     
     //Normal password validation which is not empty and conains minimum 6 charactors
-    static func normalPasswordValidation(password: String) -> (isEmpty: Bool, isInvalid: Bool) {
+    public static func normalPasswordValidation(password: String) -> (isEmpty: Bool, isInvalid: Bool) {
         let isEmpty = (password.isEmpty || password.trimmingCharacters(in: .whitespaces).count <= 0)
         let isValidPassword = (password.trimmingCharacters(in: .whitespaces).count >= 6)
         return (isEmpty: isEmpty, isInvalid: isValidPassword)
     }
     
     //Password contains one big letter, one number and and is minimum eight char long.
-    static func strongPasswordValidation(password: String) -> (isEmpty: Bool, isInvalid: Bool){
+    public static func strongPasswordValidation(password: String) -> (isEmpty: Bool, isInvalid: Bool){
         let isEmpty = (password.isEmpty || password.trimmingCharacters(in: .whitespaces).count <= 0)
         let isValidPassword = !Validator.shared.validatePassword(password: password)
         return (isEmpty: isEmpty, isInvalid: isValidPassword)
